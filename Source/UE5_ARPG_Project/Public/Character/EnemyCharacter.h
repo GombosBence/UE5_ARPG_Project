@@ -17,8 +17,13 @@ class UE5_ARPG_PROJECT_API AEnemyCharacter : public ACharacterBase, public IEnem
 	
 public:
 	AEnemyCharacter();
+
+	// Enemy interface
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
+
+protected:
+	virtual void BeginPlay() override;
 	
 	
 };

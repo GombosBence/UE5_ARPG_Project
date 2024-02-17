@@ -3,9 +3,11 @@
 
 #include "Character/PlayerCharacter.h"
 
+#include "AbilitySystemComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Player/PlayerCharacterState.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -33,4 +35,32 @@ APlayerCharacter::APlayerCharacter()
 	// Create CameraComponent
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	CameraComponent->SetupAttachment(CameraBoom);
+}
+
+void APlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	//Init ability actor info for the server
+	InitAbilityActorInfo();
+	
+}
+
+void APlayerCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	//Init ability actor info for the client
+	InitAbilityActorInfo();
+}
+
+void APlayerCharacter::InitAbilityActorInfo()
+{
+	APlayerCharacterState* PlayerCharacterState = GetPlayerState<APlayerCharacterState>();
+	check(PlayerCharacterState);
+	PlayerCharacterState->GetAbilitySystemComponent()->InitAbilityActorInfo(PlayerCharacterState, this);
+
+	//Init components
+	AbilitySystemComponent = PlayerCharacterState->GetAbilitySystemComponent();
+	AttributeSet = PlayerCharacterState->GetAttributeSet();
 }

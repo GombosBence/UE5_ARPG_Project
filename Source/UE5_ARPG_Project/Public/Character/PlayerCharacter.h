@@ -16,6 +16,8 @@ class UE5_ARPG_PROJECT_API APlayerCharacter : public ACharacterBase
 
 public:
 	APlayerCharacter();
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta = (AllowPrivateAccess = "true"))
@@ -23,5 +25,9 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent;
+
+	//Init abilityactorinfo
+
+	void InitAbilityActorInfo();
 	
 };
