@@ -4,29 +4,26 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
-#include "GameFramework/Character.h"
-#include "CharacterBase.generated.h"
+#include "GameFramework/PlayerState.h"
+#include "PlayerCharacterState.generated.h"
 
+/**
+ * 
+ */
 class UAbilitySystemComponent;
 class UAttributeSet;
-
-UCLASS(Abstract)
-class UE5_ARPG_PROJECT_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
+UCLASS()
+class UE5_ARPG_PROJECT_API APlayerCharacterState : public APlayerState, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	ACharacterBase();
+	APlayerCharacterState();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
-	virtual void BeginPlay() override;
-	UPROPERTY(EditAnywhere, Category="Combat")
-	TObjectPtr<USkeletalMeshComponent> Weapon;
-
-
-	//GAS
+	
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 	

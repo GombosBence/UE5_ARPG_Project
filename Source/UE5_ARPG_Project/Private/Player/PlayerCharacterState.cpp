@@ -1,30 +1,21 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Character/EnemyCharacter.h"
+#include "Player/PlayerCharacterState.h"
 
 #include "AbilitySystem/BaseAbilitySystemComponent.h"
 #include "AbilitySystem/PlayerAttributeSet.h"
-#include "GameFramework/CharacterMovementComponent.h"
 
-
-AEnemyCharacter::AEnemyCharacter()
+APlayerCharacterState::APlayerCharacterState()
 {
-	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
-
 	AbilitySystemComponent = CreateDefaultSubobject<UBaseAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
 
 	AttributeSet = CreateDefaultSubobject<UPlayerAttributeSet>("AttributeSet");
+	NetUpdateFrequency = 100.f;
 }
 
-void AEnemyCharacter::HighlightActor()
+UAbilitySystemComponent* APlayerCharacterState::GetAbilitySystemComponent() const
 {
-	GetMesh()->SetRenderCustomDepth(true);
-	GetMesh()->SetCustomDepthStencilValue(250.f);
-}
-
-void AEnemyCharacter::UnHighlightActor()
-{
-	GetMesh()->SetRenderCustomDepth(false);
+	return AbilitySystemComponent;
 }
