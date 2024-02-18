@@ -56,11 +56,17 @@ void APlayerCharacter::OnRep_PlayerState()
 
 void APlayerCharacter::InitAbilityActorInfo()
 {
-	APlayerCharacterState* PlayerCharacterState = GetPlayerState<APlayerCharacterState>();
-	check(PlayerCharacterState);
-	PlayerCharacterState->GetAbilitySystemComponent()->InitAbilityActorInfo(PlayerCharacterState, this);
+	if(APlayerCharacterState* PlayerCharacterState = GetPlayerState<APlayerCharacterState>())
+	{
+		PlayerCharacterState->GetAbilitySystemComponent()->InitAbilityActorInfo(PlayerCharacterState, this);
 
-	//Init components
-	AbilitySystemComponent = PlayerCharacterState->GetAbilitySystemComponent();
-	AttributeSet = PlayerCharacterState->GetAttributeSet();
+		//Init components
+		AbilitySystemComponent = PlayerCharacterState->GetAbilitySystemComponent();
+		AttributeSet = PlayerCharacterState->GetAttributeSet();
+	}
+	else
+	{
+		//Nullptr
+	}
+	
 }

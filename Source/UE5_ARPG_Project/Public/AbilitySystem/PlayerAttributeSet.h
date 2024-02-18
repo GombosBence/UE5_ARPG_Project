@@ -4,7 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
+#include "AbilitySystemComponent.h"
 #include "PlayerAttributeSet.generated.h"
+
+//accessors macro
+#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
+	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
+
 
 /**
  * 
@@ -21,15 +30,19 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category="Life")
 	FGameplayAttributeData Life;
+	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, Life);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaximumLife, Category="Life")
 	FGameplayAttributeData MaximumLife;
+	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, MaximumLife);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Mana, Category="Mana")
 	FGameplayAttributeData Mana;
+	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, Mana);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaximumMana, Category="Mana")
 	FGameplayAttributeData MaximumMana;
+	ATTRIBUTE_ACCESSORS(UPlayerAttributeSet, MaximumMana);
 	
 
 	UFUNCTION()
