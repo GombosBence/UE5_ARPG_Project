@@ -7,7 +7,9 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Player/MainCharacterController.h"
 #include "Player/PlayerCharacterState.h"
+#include "UI/HUD/MHUD.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -63,6 +65,14 @@ void APlayerCharacter::InitAbilityActorInfo()
 		//Init components
 		AbilitySystemComponent = PlayerCharacterState->GetAbilitySystemComponent();
 		AttributeSet = PlayerCharacterState->GetAttributeSet();
+
+		if(AMainCharacterController* MainCharacterController = Cast<AMainCharacterController>(GetController()))
+		{
+			if(AMHUD* Amhud = Cast<AMHUD>(MainCharacterController->GetHUD()))
+			{
+				Amhud->InitOverlay(MainCharacterController, PlayerCharacterState, AbilitySystemComponent, AttributeSet);
+			}
+		}
 	}
 	else
 	{

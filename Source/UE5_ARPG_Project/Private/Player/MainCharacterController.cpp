@@ -70,9 +70,10 @@ void AMainCharacterController::BeginPlay()
 
 	//add input mapping context
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	check(Subsystem);
-	Subsystem->AddMappingContext(PlayerContext, 0);
-
+	if(Subsystem)
+	{
+		Subsystem->AddMappingContext(PlayerContext, 0);
+	}
 	//set mouse
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;

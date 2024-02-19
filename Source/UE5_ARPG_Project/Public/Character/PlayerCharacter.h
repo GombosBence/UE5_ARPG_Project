@@ -6,6 +6,7 @@
 #include "Character/CharacterBase.h"
 #include "PlayerCharacter.generated.h"
 
+class AMHUD;
 /**
  * 
  */
@@ -29,5 +30,6 @@ private:
 	//Init abilityactorinfo
 
 	void InitAbilityActorInfo();
+	
 	
 };
