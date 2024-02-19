@@ -31,6 +31,7 @@ void AEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 
 		UPlayerAttributeSet* MutablePlayerAttributeSet = const_cast<UPlayerAttributeSet*>(PlayerAttributeSet);
 		MutablePlayerAttributeSet->SetLife(MutablePlayerAttributeSet->GetLife() + 25.f);
+		MutablePlayerAttributeSet->SetMana(MutablePlayerAttributeSet->GetMana() - 25.f);
 		Destroy();
 	}
 }
