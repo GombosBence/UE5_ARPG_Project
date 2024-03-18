@@ -5,9 +5,6 @@
 
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
-#include "AbilitySystemInterface.h"
-#include "AbilitySystem/PlayerAttributeSet.h"
-#include "Components/SphereComponent.h"
 
 // Sets default values
 AEffectActor::AEffectActor()

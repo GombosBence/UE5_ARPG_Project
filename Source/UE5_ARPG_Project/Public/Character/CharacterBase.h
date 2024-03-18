@@ -17,19 +17,15 @@ class UE5_ARPG_PROJECT_API ACharacterBase : public ACharacter, public IAbilitySy
 
 public:
 	ACharacterBase();
+	//GAS
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
 	virtual void BeginPlay() override;
-	UPROPERTY(EditAnywhere, Category="Combat")
-	TObjectPtr<USkeletalMeshComponent> Weapon;
-
-
 	//GAS
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
-	
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
 	
