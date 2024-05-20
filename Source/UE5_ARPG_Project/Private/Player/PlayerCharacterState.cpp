@@ -13,6 +13,8 @@ APlayerCharacterState::APlayerCharacterState()
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	AttributeSet = CreateDefaultSubobject<UPlayerAttributeSet>("AttributeSet");
+	
+	//How often the server updates clients
 	NetUpdateFrequency = 100.f;
 }
 

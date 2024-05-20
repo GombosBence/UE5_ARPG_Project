@@ -10,6 +10,7 @@
 class UAbilitySystemComponent;
 class UAttributeSet;
 
+//Base character class for shared functionality between player and AI controlled characters
 UCLASS(Abstract)
 class UE5_ARPG_PROJECT_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
 {
