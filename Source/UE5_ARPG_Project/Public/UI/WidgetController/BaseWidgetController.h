@@ -35,6 +35,8 @@ struct FWidgetControllerParams
 /**
  * 
  */
+
+//The WidgetController takes every relevant Data and broadcasts to any widget that have their controller set to it.
 UCLASS()
 class UE5_ARPG_PROJECT_API UBaseWidgetController : public UObject
 {

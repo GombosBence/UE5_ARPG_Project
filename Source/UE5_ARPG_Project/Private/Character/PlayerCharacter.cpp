@@ -52,7 +52,7 @@ void APlayerCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
 
-	//Init ability actor info for the client
+	//Init ability actor info for the client, makes sure that the player state is also set
 	InitAbilityActorInfo();
 }
 
