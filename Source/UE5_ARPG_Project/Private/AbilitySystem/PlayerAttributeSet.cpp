@@ -9,7 +9,7 @@ UPlayerAttributeSet::UPlayerAttributeSet()
 {
 	InitLife(75.f);
 	InitMaximumLife(100.f);
-	InitMana(50.f);
+	InitMana(25.f);
 	InitMaximumMana(50.f);
 }
 
