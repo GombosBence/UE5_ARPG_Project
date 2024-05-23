@@ -89,5 +89,8 @@ protected:
 	*/
 	//Map to store infinite effects so they can be removed manually
 	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Applied Effects")
+	float ActorLevel = 1.f;
 	
 };
